@@ -9,7 +9,6 @@ app = Flask(__name__)
 @app.route('/productionplan', methods=['POST'])
 def production_plan():
     try:
-        # Get JSON data from the request
         data = request.get_json()
         load_data = data["load"]
         fuels_data = data["fuels"]
@@ -30,9 +29,7 @@ def production_plan():
         return jsonify(response), 200
 
     except Exception as e:
-        # Handle any runtime errors and return a suitable response
         return jsonify({"error": str(e)}), 500
 
-# Run the app
 if __name__ == '__main__':
     app.run(debug=True, port=8888)
